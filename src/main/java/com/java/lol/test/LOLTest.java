@@ -21,7 +21,7 @@ public class LOLTest {
         list.add(PieceFactory.getPieceInstance("剑魔"));
         list.add(PieceFactory.getPieceInstance("德莱文"));
         list.add(PieceFactory.getPieceInstance("奥巴马&剑士"));
-
+//hh
         String lineupResult = new Lineup(list).getLineupResult();
         System.out.println(lineupResult);
     }
