@@ -54,6 +54,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="LogFilters">
@@ -79,10 +80,12 @@
     </option>
   </component>
   <component name="ProjectId" id="1R8tpuFhyDi8VS74OTx8XT3YYdr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/Program Files/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Facets" />
@@ -257,7 +260,7 @@
       <workItem from="1569067331356" duration="4320000" />
       <workItem from="1569078837531" duration="944000" />
       <workItem from="1569079798244" duration="926000" />
-      <workItem from="1569080742958" duration="16073000" />
+      <workItem from="1569080742958" duration="16651000" />
     </task>
     <servers />
   </component>
