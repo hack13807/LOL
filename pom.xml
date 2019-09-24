@@ -6,7 +6,11 @@
 
     <groupId>com.wells.lol</groupId>
     <artifactId>LOL</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>MybatisSpring</module>
+    </modules>
 
     <repositories>
         <repository>
