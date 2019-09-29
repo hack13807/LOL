@@ -16,7 +16,8 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="username" value="root"/>
         <property name="password" value="502213"/>
-        <property name="url" value="jdbc:mysql:///mysql?serverTimezone=GMT%2B8"/>
+        <property name="url" value="jdbc:mysql:///mysql?serverTimezone=UTC"/>
+<!--        ?serverTimezone=GM T%2B8-->
     </bean>
 
     <!--  配置SQLSessionFactory  -->
@@ -26,7 +27,7 @@
         <!--    mybatis批量别名配置    -->
         <property name="typeAliasesPackage" value="com.wells"/>
         <!--    注入mybatis全局配置文件路径（可省略）    -->
-        <!--        <property name="configLocation" value="mybatis/mybatis"/>-->
+        <property name="mapperLocations" value="classpath:mybatis/AccountMapper.xml"/>
     </bean>
 
     <!--  相当于配置之前的持久层bean  -->
@@ -41,10 +42,9 @@
 
     <!--  配置mapper代理对象方式二：MapperScannerConfigurer  -->
     <!--  批量代理对象的生成  -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!--    指定需要生成代理的接口所在的包名    -->
-        <property name="basePackage" value="com.wells.mapper"/>
-
-        <!--    注意事项：不要配置sqlSessionFactory   -->
-    </bean>
+    <!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+    <!--        &lt;!&ndash;    指定需要生成代理的接口所在的包名    &ndash;&gt;-->
+    <!--        <property name="basePackage" value="com.wells.mapper"/>-->
+    <!--        &lt;!&ndash;    注意事项：不要配置sqlSessionFactory   &ndash;&gt;-->
+    <!--    </bean>-->
 </beans>
