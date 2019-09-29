@@ -25,5 +25,11 @@ public class TestMarge {
     public void tt() {
         double panghu = accountService.queryMoney("panghu");
         System.out.println(panghu);
+
+        try {
+            accountService.transMoney("panghu","Mr.ma",999);
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 }

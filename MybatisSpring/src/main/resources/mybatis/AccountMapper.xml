@@ -4,11 +4,11 @@
 <mapper namespace="com.wells.mapper.AccountMapper">
 <!--  查询  -->
     <select id="queryMoney" parameterType="string" resultType="double">
-        select money from t_account where name = #{name}
+        select fmoney from t_account where fname = #{name}
     </select>
 
 <!--  修改  -->
     <update id="update" parameterType="map">
-        update t_account set money = #{money} where name = #{name}
+        update t_account set fmoney = #{money} where fname = #{name}
     </update>
 </mapper>
