@@ -14,8 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring/applicationContext-tx.xml",
-        "classpath:spring/applicationContext-dao.xml","classpath:spring/applicationContext-service.xml"})
+@ContextConfiguration(locations = "classpath:spring/applicationContext-*.xml")
 public class TestMarge {
 
     @Resource
@@ -23,13 +22,15 @@ public class TestMarge {
 
     @Test
     public void tt() {
-        double panghu = accountService.queryMoney("panghu");
-        System.out.println(panghu);
 
         try {
-            accountService.transMoney("panghu","Mr.ma",999);
+            accountService.transMoney("Mr.ma","panghu",10);
         }catch (Exception e){
             System.out.println(e);
         }
+        double panghu = accountService.queryMoney("panghu");
+        double Mrma = accountService.queryMoney("Mr.ma");
+        System.out.println(panghu);
+        System.out.println(Mrma);
     }
 }

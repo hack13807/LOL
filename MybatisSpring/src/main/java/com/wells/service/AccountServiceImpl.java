@@ -18,6 +18,7 @@ public class AccountServiceImpl implements AccountService {
             throw new RuntimeException("Óà¶î²»×ã");
         }
         mapper.update(fromName,fromMoney - money);
+//        System.out.println(1/0);
         mapper.update(toName,toMoney + money);
     }
 
