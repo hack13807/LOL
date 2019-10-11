@@ -31,4 +31,9 @@
 
     <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>-->
     <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->
+    <!--  显式配置视图解析器  -->
+<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--        <property name="prefix" value=""/>-->
+<!--        <property name="suffix" value=""/>-->
+<!--    </bean>-->
 </beans>

@@ -6,7 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="MybatisSpring" />
+        <module name="SpringMVC" />
         <module name="LOL" />
+        <module name="SSM" />
+        <module name="YogaLOL" />
       </profile>
     </annotationProcessing>
   </component>
