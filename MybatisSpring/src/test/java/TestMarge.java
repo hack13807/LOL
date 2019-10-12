@@ -1,4 +1,4 @@
-import com.wells.service.AccountService;
+import com.wells.ssm.service.AccountService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

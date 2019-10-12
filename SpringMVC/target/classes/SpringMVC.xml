@@ -27,7 +27,7 @@
         </property>
     </bean>
 
-    <!--    <bean name="/getLineup" class="com.wells.lol.controller.ItemController2"/>-->
+    <!--    <bean name="/getLineup" class="ItemController2"/>-->
 
     <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>-->
     <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->

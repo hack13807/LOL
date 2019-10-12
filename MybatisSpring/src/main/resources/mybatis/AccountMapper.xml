@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wells.mapper.AccountMapper">
+<mapper namespace="AccountMapper">
 <!--  查询  -->
     <select id="queryMoney" parameterType="string" resultType="double">
         select fmoney from t_account where fname = #{name}

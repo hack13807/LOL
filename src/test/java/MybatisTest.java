@@ -1,5 +1,5 @@
-import com.wells.lol.mapper.PieceMapper;
-import com.wells.lol.pojo.Piece;
+import com.wells.ssm.lol.mapper.PieceMapper;
+import com.wells.ssm.lol.pojo.Piece;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.*;
 import java.util.*;
 
 

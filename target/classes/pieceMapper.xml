@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wells.lol.mapper.PieceMapper">
+<mapper namespace="PieceMapper">
 
     <!-- insert，
 	parameterType="user"表示该插入语句需要一个user对象作为参数
 	useGeneratedKeys="true"表示使用自动增长的主键 -->
-    <insert id="insertPiece" parameterType="com.wells.lol.pojo.Piece"
+    <insert id="insertPiece" parameterType="Piece"
             useGeneratedKeys="true" keyProperty="id">
   	INSERT INTO t_piece(fname,fnumber,farmor,fresistance,fattack,fmagic,fattack_distance,fattack_speed,fcrit)
   	VALUES(#{name},#{number},#{armor},#{resistance},#{attack},#{magic},#{attack_distance},#{attack_speed},#{crit})
   </insert>
 
-    <resultMap id="pieceMap" type="com.wells.lol.pojo.Piece">
+    <resultMap id="pieceMap" type="Piece">
         <!-- 用id属性来映射主键字段 -->
         <id column="fid" jdbcType="VARCHAR" property="id" />
         <!-- 用result属性来映射非主键字段 -->
@@ -33,7 +33,7 @@
         select fname, fnumber from t_piece
     </select>
 
-    <select id="getPieceByName"  resultType="com.wells.lol.pojo.Piece">
+    <select id="getPieceByName"  resultType="Piece">
         select fname name from t_piece2 where fname = #{name}
         <if test="armor != null">
             and farmor &lt;&gt; 10
@@ -50,7 +50,7 @@
         where farmor = #{armor};
     </update>
 
-    <insert id="insertPiece2" parameterType="com.wells.lol.pojo.Piece" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertPiece2" parameterType="Piece" useGeneratedKeys="true" keyProperty="id">
   	INSERT INTO t_piece2(fname,fnumber,farmor,fresistance,fattack,fmagic,fattack_distance,fattack_speed,fcrit)
         VALUES
         <foreach collection="list" item="piece" separator=",">

@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wells.ssm.mapper.jobspeciesMapper">
+  <resultMap id="BaseResultMap" type="com.wells.ssm.pojo.jobspecies">
+    <id column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="ftriggercount" jdbcType="CHAR" property="ftriggercount" />
+    <result column="ftriggercount2" jdbcType="CHAR" property="ftriggercount2" />
+    <result column="ftriggercount3" jdbcType="CHAR" property="ftriggercount3" />
+    <result column="ftriggermaxcount" jdbcType="CHAR" property="ftriggermaxcount" />
+    <result column="fname" jdbcType="VARCHAR" property="fname" />
+    <result column="fnumber" jdbcType="VARCHAR" property="fnumber" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    fid, ftriggercount, ftriggercount2, ftriggercount3, ftriggermaxcount, fname, fnumber
+  </sql>
+  <select id="selectByExample" parameterType="com.wells.ssm.pojo.jobspeciesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_jobspecies
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_jobspecies
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_jobspecies
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wells.ssm.pojo.jobspeciesExample">
+    delete from t_jobspecies
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wells.ssm.pojo.jobspecies">
+    insert into t_jobspecies (fid, ftriggercount, ftriggercount2, 
+      ftriggercount3, ftriggermaxcount, fname, 
+      fnumber)
+    values (#{fid,jdbcType=INTEGER}, #{ftriggercount,jdbcType=CHAR}, #{ftriggercount2,jdbcType=CHAR}, 
+      #{ftriggercount3,jdbcType=CHAR}, #{ftriggermaxcount,jdbcType=CHAR}, #{fname,jdbcType=VARCHAR}, 
+      #{fnumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wells.ssm.pojo.jobspecies">
+    insert into t_jobspecies
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="ftriggercount != null">
+        ftriggercount,
+      </if>
+      <if test="ftriggercount2 != null">
+        ftriggercount2,
+      </if>
+      <if test="ftriggercount3 != null">
+        ftriggercount3,
+      </if>
+      <if test="ftriggermaxcount != null">
+        ftriggermaxcount,
+      </if>
+      <if test="fname != null">
+        fname,
+      </if>
+      <if test="fnumber != null">
+        fnumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="ftriggercount != null">
+        #{ftriggercount,jdbcType=CHAR},
+      </if>
+      <if test="ftriggercount2 != null">
+        #{ftriggercount2,jdbcType=CHAR},
+      </if>
+      <if test="ftriggercount3 != null">
+        #{ftriggercount3,jdbcType=CHAR},
+      </if>
+      <if test="ftriggermaxcount != null">
+        #{ftriggermaxcount,jdbcType=CHAR},
+      </if>
+      <if test="fname != null">
+        #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="fnumber != null">
+        #{fnumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wells.ssm.pojo.jobspeciesExample" resultType="java.lang.Long">
+    select count(*) from t_jobspecies
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_jobspecies
+    <set>
+      <if test="record.fid != null">
+        fid = #{record.fid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ftriggercount != null">
+        ftriggercount = #{record.ftriggercount,jdbcType=CHAR},
+      </if>
+      <if test="record.ftriggercount2 != null">
+        ftriggercount2 = #{record.ftriggercount2,jdbcType=CHAR},
+      </if>
+      <if test="record.ftriggercount3 != null">
+        ftriggercount3 = #{record.ftriggercount3,jdbcType=CHAR},
+      </if>
+      <if test="record.ftriggermaxcount != null">
+        ftriggermaxcount = #{record.ftriggermaxcount,jdbcType=CHAR},
+      </if>
+      <if test="record.fname != null">
+        fname = #{record.fname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fnumber != null">
+        fnumber = #{record.fnumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_jobspecies
+    set fid = #{record.fid,jdbcType=INTEGER},
+      ftriggercount = #{record.ftriggercount,jdbcType=CHAR},
+      ftriggercount2 = #{record.ftriggercount2,jdbcType=CHAR},
+      ftriggercount3 = #{record.ftriggercount3,jdbcType=CHAR},
+      ftriggermaxcount = #{record.ftriggermaxcount,jdbcType=CHAR},
+      fname = #{record.fname,jdbcType=VARCHAR},
+      fnumber = #{record.fnumber,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wells.ssm.pojo.jobspecies">
+    update t_jobspecies
+    <set>
+      <if test="ftriggercount != null">
+        ftriggercount = #{ftriggercount,jdbcType=CHAR},
+      </if>
+      <if test="ftriggercount2 != null">
+        ftriggercount2 = #{ftriggercount2,jdbcType=CHAR},
+      </if>
+      <if test="ftriggercount3 != null">
+        ftriggercount3 = #{ftriggercount3,jdbcType=CHAR},
+      </if>
+      <if test="ftriggermaxcount != null">
+        ftriggermaxcount = #{ftriggermaxcount,jdbcType=CHAR},
+      </if>
+      <if test="fname != null">
+        fname = #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="fnumber != null">
+        fnumber = #{fnumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wells.ssm.pojo.jobspecies">
+    update t_jobspecies
+    set ftriggercount = #{ftriggercount,jdbcType=CHAR},
+      ftriggercount2 = #{ftriggercount2,jdbcType=CHAR},
+      ftriggercount3 = #{ftriggercount3,jdbcType=CHAR},
+      ftriggermaxcount = #{ftriggermaxcount,jdbcType=CHAR},
+      fname = #{fname,jdbcType=VARCHAR},
+      fnumber = #{fnumber,jdbcType=VARCHAR}
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wells.ssm.pojo.jobspecies">
+    <id column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="ftriggercount" jdbcType="CHAR" property="ftriggercount" />
+    <result column="ftriggercount2" jdbcType="CHAR" property="ftriggercount2" />
+    <result column="ftriggercount3" jdbcType="CHAR" property="ftriggercount3" />
+    <result column="ftriggermaxcount" jdbcType="CHAR" property="ftriggermaxcount" />
+    <result column="fname" jdbcType="VARCHAR" property="fname" />
+    <result column="fnumber" jdbcType="VARCHAR" property="fnumber" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    fid, ftriggercount, ftriggercount2, ftriggercount3, ftriggermaxcount, fname, fnumber
+  </sql>
+  <select id="selectByExample" parameterType="com.wells.ssm.pojo.jobspeciesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_jobspecies
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_jobspecies
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_jobspecies
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wells.ssm.pojo.jobspeciesExample">
+    delete from t_jobspecies
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wells.ssm.pojo.jobspecies">
+    insert into t_jobspecies (fid, ftriggercount, ftriggercount2, 
+      ftriggercount3, ftriggermaxcount, fname, 
+      fnumber)
+    values (#{fid,jdbcType=INTEGER}, #{ftriggercount,jdbcType=CHAR}, #{ftriggercount2,jdbcType=CHAR}, 
+      #{ftriggercount3,jdbcType=CHAR}, #{ftriggermaxcount,jdbcType=CHAR}, #{fname,jdbcType=VARCHAR}, 
+      #{fnumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wells.ssm.pojo.jobspecies">
+    insert into t_jobspecies
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="ftriggercount != null">
+        ftriggercount,
+      </if>
+      <if test="ftriggercount2 != null">
+        ftriggercount2,
+      </if>
+      <if test="ftriggercount3 != null">
+        ftriggercount3,
+      </if>
+      <if test="ftriggermaxcount != null">
+        ftriggermaxcount,
+      </if>
+      <if test="fname != null">
+        fname,
+      </if>
+      <if test="fnumber != null">
+        fnumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="ftriggercount != null">
+        #{ftriggercount,jdbcType=CHAR},
+      </if>
+      <if test="ftriggercount2 != null">
+        #{ftriggercount2,jdbcType=CHAR},
+      </if>
+      <if test="ftriggercount3 != null">
+        #{ftriggercount3,jdbcType=CHAR},
+      </if>
+      <if test="ftriggermaxcount != null">
+        #{ftriggermaxcount,jdbcType=CHAR},
+      </if>
+      <if test="fname != null">
+        #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="fnumber != null">
+        #{fnumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wells.ssm.pojo.jobspeciesExample" resultType="java.lang.Long">
+    select count(*) from t_jobspecies
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_jobspecies
+    <set>
+      <if test="record.fid != null">
+        fid = #{record.fid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ftriggercount != null">
+        ftriggercount = #{record.ftriggercount,jdbcType=CHAR},
+      </if>
+      <if test="record.ftriggercount2 != null">
+        ftriggercount2 = #{record.ftriggercount2,jdbcType=CHAR},
+      </if>
+      <if test="record.ftriggercount3 != null">
+        ftriggercount3 = #{record.ftriggercount3,jdbcType=CHAR},
+      </if>
+      <if test="record.ftriggermaxcount != null">
+        ftriggermaxcount = #{record.ftriggermaxcount,jdbcType=CHAR},
+      </if>
+      <if test="record.fname != null">
+        fname = #{record.fname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fnumber != null">
+        fnumber = #{record.fnumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_jobspecies
+    set fid = #{record.fid,jdbcType=INTEGER},
+      ftriggercount = #{record.ftriggercount,jdbcType=CHAR},
+      ftriggercount2 = #{record.ftriggercount2,jdbcType=CHAR},
+      ftriggercount3 = #{record.ftriggercount3,jdbcType=CHAR},
+      ftriggermaxcount = #{record.ftriggermaxcount,jdbcType=CHAR},
+      fname = #{record.fname,jdbcType=VARCHAR},
+      fnumber = #{record.fnumber,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wells.ssm.pojo.jobspecies">
+    update t_jobspecies
+    <set>
+      <if test="ftriggercount != null">
+        ftriggercount = #{ftriggercount,jdbcType=CHAR},
+      </if>
+      <if test="ftriggercount2 != null">
+        ftriggercount2 = #{ftriggercount2,jdbcType=CHAR},
+      </if>
+      <if test="ftriggercount3 != null">
+        ftriggercount3 = #{ftriggercount3,jdbcType=CHAR},
+      </if>
+      <if test="ftriggermaxcount != null">
+        ftriggermaxcount = #{ftriggermaxcount,jdbcType=CHAR},
+      </if>
+      <if test="fname != null">
+        fname = #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="fnumber != null">
+        fnumber = #{fnumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wells.ssm.pojo.jobspecies">
+    update t_jobspecies
+    set ftriggercount = #{ftriggercount,jdbcType=CHAR},
+      ftriggercount2 = #{ftriggercount2,jdbcType=CHAR},
+      ftriggercount3 = #{ftriggercount3,jdbcType=CHAR},
+      ftriggermaxcount = #{ftriggermaxcount,jdbcType=CHAR},
+      fname = #{fname,jdbcType=VARCHAR},
+      fnumber = #{fnumber,jdbcType=VARCHAR}
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+</mapper>
