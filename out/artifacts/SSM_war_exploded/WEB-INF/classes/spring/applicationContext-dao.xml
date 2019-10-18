@@ -24,9 +24,9 @@
         <!--    注入dataSource    -->
         <property name="dataSource" ref="dataSource"/>
         <!--    mybatis批量别名配置    -->
-<!--        <property name="typeAliasesPackage" value="com.wells"/>-->
+        <property name="typeAliasesPackage" value="com.wells.ssm.pojo"/>
         <!--    注入mybatis全局配置文件路径（可省略）    -->
-        <property name="mapperLocations" value="classpath:mybatis/AccountMapper.xml"/>
+        <property name="mapperLocations" value="classpath:mybatis/*.xml"/>
     </bean>
 
     <!--  相当于配置之前的持久层bean  -->
@@ -36,14 +36,14 @@
     <!--        &lt;!&ndash;注入sqlSessionFactory&ndash;&gt;-->
     <!--        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>-->
     <!--        &lt;!&ndash;    注入目标接口类    &ndash;&gt;-->
-    <!--        <property name="mapperInterface" value="com.wells.mapper.AccountMapper"/>-->
+    <!--        <property name="mapperInterface" value="AccountMapper"/>-->
     <!--    </bean>-->
 
     <!--  配置mapper代理对象方式二：MapperScannerConfigurer  -->
     <!--  批量代理对象的生成  -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--    指定需要生成代理的接口所在的包名    -->
-        <property name="basePackage" value="com.wells.mapper"/>
+        <property name="basePackage" value="com.wells.ssm.mapper"/>
         <!--    注意事项：不要配置sqlSessionFactory   -->
     </bean>
 </beans>

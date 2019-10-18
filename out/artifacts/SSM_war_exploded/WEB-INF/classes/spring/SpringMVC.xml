@@ -9,20 +9,30 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:default-servlet-handler/>
+    <!--    <mvc:default-servlet-handler/>-->
     <!--  配置注解的适配器和映射器，同时还注入了很多其他的bean  -->
-    <mvc:annotation-driven/>
+    <!--  处理器适配器会去调用conversion-service  -->
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
     <!--  处理器类的扫描  -->
-    <context:component-scan base-package="com.wells.lol.controller"/>
+    <context:component-scan base-package="com.wells.ssm.controller"/>
 
-<!--        <bean name="/getLineup" class="com.wells.lol.controller.ItemController2"/>-->
-
+    <!--        <bean name="/getLineup" class="ItemController2"/>-->
     <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>-->
     <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->
     <!--  显式配置视图解析器  -->
-<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-<!--        <property name="prefix" value=""/>-->
-<!--        <property name="suffix" value=""/>-->
-<!--    </bean>-->
+    <!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+    <!--        <property name="prefix" value=""/>-->
+    <!--        <property name="suffix" value=""/>-->
+    <!--    </bean>-->
+
+    <!--  配置自定义转换服务  -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <!--       自定义日期类型转换器         -->
+                <bean class="com.wells.ssm.converter.DateConvertor"/>
+            </set>
+        </property>
+    </bean>
 </beans>

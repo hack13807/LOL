@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wells.ssm.mapper.PieceMapper">
+  <resultMap id="BaseResultMap" type="com.wells.ssm.pojo.Piece">
+    <id column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="fname" jdbcType="VARCHAR" property="fname" />
+    <result column="fnumber" jdbcType="VARCHAR" property="fnumber" />
+    <result column="fattack" jdbcType="INTEGER" property="fattack" />
+    <result column="fmagic" jdbcType="INTEGER" property="fmagic" />
+    <result column="farmor" jdbcType="INTEGER" property="farmor" />
+    <result column="fresistance" jdbcType="INTEGER" property="fresistance" />
+    <result column="fattack_distance" jdbcType="INTEGER" property="fattackDistance" />
+    <result column="fcrit" jdbcType="INTEGER" property="fcrit" />
+    <result column="fattack_speed" jdbcType="REAL" property="fattackSpeed" />
+    <result column="fskills" jdbcType="INTEGER" property="fskills" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    fid, fname, fnumber, fattack, fmagic, farmor, fresistance, fattack_distance, fcrit, 
+    fattack_speed, fskills
+  </sql>
+  <select id="selectByExample" parameterType="com.wells.ssm.pojo.PieceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_piece
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_piece
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_piece
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wells.ssm.pojo.PieceExample">
+    delete from t_piece
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wells.ssm.pojo.Piece">
+    insert into t_piece (fid, fname, fnumber, 
+      fattack, fmagic, farmor, 
+      fresistance, fattack_distance, fcrit, 
+      fattack_speed, fskills)
+    values (#{fid,jdbcType=INTEGER}, #{fname,jdbcType=VARCHAR}, #{fnumber,jdbcType=VARCHAR}, 
+      #{fattack,jdbcType=INTEGER}, #{fmagic,jdbcType=INTEGER}, #{farmor,jdbcType=INTEGER}, 
+      #{fresistance,jdbcType=INTEGER}, #{fattackDistance,jdbcType=INTEGER}, #{fcrit,jdbcType=INTEGER}, 
+      #{fattackSpeed,jdbcType=REAL}, #{fskills,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wells.ssm.pojo.Piece">
+    insert into t_piece
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="fname != null">
+        fname,
+      </if>
+      <if test="fnumber != null">
+        fnumber,
+      </if>
+      <if test="fattack != null">
+        fattack,
+      </if>
+      <if test="fmagic != null">
+        fmagic,
+      </if>
+      <if test="farmor != null">
+        farmor,
+      </if>
+      <if test="fresistance != null">
+        fresistance,
+      </if>
+      <if test="fattackDistance != null">
+        fattack_distance,
+      </if>
+      <if test="fcrit != null">
+        fcrit,
+      </if>
+      <if test="fattackSpeed != null">
+        fattack_speed,
+      </if>
+      <if test="fskills != null">
+        fskills,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="fname != null">
+        #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="fnumber != null">
+        #{fnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fattack != null">
+        #{fattack,jdbcType=INTEGER},
+      </if>
+      <if test="fmagic != null">
+        #{fmagic,jdbcType=INTEGER},
+      </if>
+      <if test="farmor != null">
+        #{farmor,jdbcType=INTEGER},
+      </if>
+      <if test="fresistance != null">
+        #{fresistance,jdbcType=INTEGER},
+      </if>
+      <if test="fattackDistance != null">
+        #{fattackDistance,jdbcType=INTEGER},
+      </if>
+      <if test="fcrit != null">
+        #{fcrit,jdbcType=INTEGER},
+      </if>
+      <if test="fattackSpeed != null">
+        #{fattackSpeed,jdbcType=REAL},
+      </if>
+      <if test="fskills != null">
+        #{fskills,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wells.ssm.pojo.PieceExample" resultType="java.lang.Long">
+    select count(*) from t_piece
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_piece
+    <set>
+      <if test="record.fid != null">
+        fid = #{record.fid,jdbcType=INTEGER},
+      </if>
+      <if test="record.fname != null">
+        fname = #{record.fname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fnumber != null">
+        fnumber = #{record.fnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fattack != null">
+        fattack = #{record.fattack,jdbcType=INTEGER},
+      </if>
+      <if test="record.fmagic != null">
+        fmagic = #{record.fmagic,jdbcType=INTEGER},
+      </if>
+      <if test="record.farmor != null">
+        farmor = #{record.farmor,jdbcType=INTEGER},
+      </if>
+      <if test="record.fresistance != null">
+        fresistance = #{record.fresistance,jdbcType=INTEGER},
+      </if>
+      <if test="record.fattackDistance != null">
+        fattack_distance = #{record.fattackDistance,jdbcType=INTEGER},
+      </if>
+      <if test="record.fcrit != null">
+        fcrit = #{record.fcrit,jdbcType=INTEGER},
+      </if>
+      <if test="record.fattackSpeed != null">
+        fattack_speed = #{record.fattackSpeed,jdbcType=REAL},
+      </if>
+      <if test="record.fskills != null">
+        fskills = #{record.fskills,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_piece
+    set fid = #{record.fid,jdbcType=INTEGER},
+      fname = #{record.fname,jdbcType=VARCHAR},
+      fnumber = #{record.fnumber,jdbcType=VARCHAR},
+      fattack = #{record.fattack,jdbcType=INTEGER},
+      fmagic = #{record.fmagic,jdbcType=INTEGER},
+      farmor = #{record.farmor,jdbcType=INTEGER},
+      fresistance = #{record.fresistance,jdbcType=INTEGER},
+      fattack_distance = #{record.fattackDistance,jdbcType=INTEGER},
+      fcrit = #{record.fcrit,jdbcType=INTEGER},
+      fattack_speed = #{record.fattackSpeed,jdbcType=REAL},
+      fskills = #{record.fskills,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wells.ssm.pojo.Piece">
+    update t_piece
+    <set>
+      <if test="fname != null">
+        fname = #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="fnumber != null">
+        fnumber = #{fnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fattack != null">
+        fattack = #{fattack,jdbcType=INTEGER},
+      </if>
+      <if test="fmagic != null">
+        fmagic = #{fmagic,jdbcType=INTEGER},
+      </if>
+      <if test="farmor != null">
+        farmor = #{farmor,jdbcType=INTEGER},
+      </if>
+      <if test="fresistance != null">
+        fresistance = #{fresistance,jdbcType=INTEGER},
+      </if>
+      <if test="fattackDistance != null">
+        fattack_distance = #{fattackDistance,jdbcType=INTEGER},
+      </if>
+      <if test="fcrit != null">
+        fcrit = #{fcrit,jdbcType=INTEGER},
+      </if>
+      <if test="fattackSpeed != null">
+        fattack_speed = #{fattackSpeed,jdbcType=REAL},
+      </if>
+      <if test="fskills != null">
+        fskills = #{fskills,jdbcType=INTEGER},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wells.ssm.pojo.Piece">
+    update t_piece
+    set fname = #{fname,jdbcType=VARCHAR},
+      fnumber = #{fnumber,jdbcType=VARCHAR},
+      fattack = #{fattack,jdbcType=INTEGER},
+      fmagic = #{fmagic,jdbcType=INTEGER},
+      farmor = #{farmor,jdbcType=INTEGER},
+      fresistance = #{fresistance,jdbcType=INTEGER},
+      fattack_distance = #{fattackDistance,jdbcType=INTEGER},
+      fcrit = #{fcrit,jdbcType=INTEGER},
+      fattack_speed = #{fattackSpeed,jdbcType=REAL},
+      fskills = #{fskills,jdbcType=INTEGER}
+    where fid = #{fid,jdbcType=INTEGER}
+  </update>
+</mapper>
