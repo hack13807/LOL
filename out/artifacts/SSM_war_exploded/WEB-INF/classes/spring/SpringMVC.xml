@@ -17,6 +17,8 @@
     <!--  处理器类的扫描  -->
     <context:component-scan base-package="com.wells.ssm.controller"/>
 
+    <context:component-scan base-package="com.wells.ssm.pojo"/>
+
     <!--        <bean name="/getLineup" class="ItemController2"/>-->
     <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>-->
     <!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->
