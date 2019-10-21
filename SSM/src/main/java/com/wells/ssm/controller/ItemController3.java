@@ -36,13 +36,13 @@ public class ItemController3 {
         try {
             accountService.transMoney("Mr.ma", "panghu", 10);
             List<Piece> pieces = pieceService.queryPieceList();
+            double panghu = accountService.queryMoney("panghu");
+            double Mrma = accountService.queryMoney("Mr.ma");
+            System.out.println(panghu);
+            System.out.println(Mrma);
         } catch (Exception e) {
             System.out.println(e);
         }
-        double panghu = accountService.queryMoney("panghu");
-        double Mrma = accountService.queryMoney("Mr.ma");
-        System.out.println(panghu);
-        System.out.println(Mrma);
         String lineupResult = "";
 
         try {
