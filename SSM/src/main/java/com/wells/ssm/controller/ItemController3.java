@@ -1,5 +1,6 @@
 package com.wells.ssm.controller;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mysql.cj.xdevapi.JsonArray;
 import com.wells.ssm.lol.common.Lineup;
 import com.wells.ssm.pojo.Jobspecies;
@@ -81,7 +82,7 @@ public class ItemController3 {
         return vo.getJobspeciesList();
     }
     @RequestMapping(value = "date",produces = "application/json;charset=utf-8")
-    public String date(Date date) {
-        return date.toString();
+    public Date date(Date date) {
+        return date;
     }
 }
