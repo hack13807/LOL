@@ -1,21 +1,15 @@
 package com.wells.ssm.controller;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.mysql.cj.xdevapi.JsonArray;
+import com.wells.ssm.exception.LOLException;
 import com.wells.ssm.lol.common.Lineup;
 import com.wells.ssm.pojo.Jobspecies;
 import com.wells.ssm.pojo.Piece;
 import com.wells.ssm.service.AccountService;
 import com.wells.ssm.service.PieceService;
-import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
@@ -30,11 +24,11 @@ public class ItemController3 {
     @Autowired
     private PieceService pieceService;
 
-    @RequestMapping(value = "getLineup")
+    @RequestMapping("{piece}")
     @ResponseBody
-    public String getLineup(String[] piece) {//@RequestParam(value = "piece")
+    public String getLineup(@PathVariable String[] piece) throws LOLException {//@RequestParam(value = "piece")
         try {
-            accountService.transMoney("Mr.ma", "panghu", 10);
+//            accountService.transMoney("Mr.ma", "panghu", 10);
             List<Piece> pieces = pieceService.queryPieceList();
             double panghu = accountService.queryMoney("panghu");
             double Mrma = accountService.queryMoney("Mr.ma");
@@ -44,32 +38,35 @@ public class ItemController3 {
             System.out.println(e);
         }
         String lineupResult = "";
-
         try {
             lineupResult = new Lineup().getLineupResult(piece);
             if (lineupResult == null || lineupResult.trim().equals("")) {
                 lineupResult = "请选择至少一枚棋子";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new LOLException("asd");
         }
         return lineupResult;
     }
 
-    @RequestMapping("testForward")
-    @ResponseBody
+    @RequestMapping(value = "testForward")
     public String testForward(@RequestParam(value = "id",required = false,defaultValue = "9527") int id) {
 //        return "/index.jsp";
 //        return "参数:"+id;
         JSONObject object=new JSONObject();
-        object.put("a","哈哈");
-        return object.toString();
+        object.put("msg","哈哈");
+        return "/index.jsp";
     }
 
-    @RequestMapping("testpojo")
+    @RequestMapping(value = "testpojo")
     @ResponseBody
     public Piece testpojo(PieceVo vo) {
         return vo.getPiece();
+    }
+    @RequestMapping("{id}/{name}")
+    @ResponseBody
+    public Piece testRestful(@PathVariable int id, @PathVariable String name,Piece piece) {
+        return piece;
     }
     @RequestMapping(value = "array",produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -82,7 +79,7 @@ public class ItemController3 {
         return vo.getJobspeciesList();
     }
     @RequestMapping(value = "date",produces = "application/json;charset=utf-8")
-    public Date date(Date date) {
+    public Date date(Date date) throws LOLException {
         return date;
     }
 }

@@ -22,11 +22,11 @@
     <!--  配置ContextLoaderListener监听器加载spring父容器  -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-<!--        <param-value>-->
-<!--            classpath:spring/applicationContext-dao.xml-->
-<!--            classpath:spring/applicationContext-service.xml-->
-<!--            classpath:spring/applicationContext-tx.xml,-->
-<!--        </param-value>-->
+        <!--        <param-value>-->
+        <!--            classpath:spring/applicationContext-dao.xml-->
+        <!--            classpath:spring/applicationContext-service.xml-->
+        <!--            classpath:spring/applicationContext-tx.xml,-->
+        <!--        </param-value>-->
         <param-value>
             classpath:spring/applicationContext-*.xml
         </param-value>
@@ -34,4 +34,19 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
+    <!--  POST乱码过滤器  -->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

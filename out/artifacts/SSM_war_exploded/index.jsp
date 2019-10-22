@@ -21,7 +21,7 @@
       })
 
       $.ajax({
-        url: "line/getLineup",
+        url: "line/"+checkID,
         type: "post",
         data: {
           "piece": checkID,

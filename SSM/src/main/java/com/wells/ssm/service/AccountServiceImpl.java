@@ -14,7 +14,7 @@ public class AccountServiceImpl implements AccountService {
     public void transMoney(String fromName, String toName, double money) {
         double fromMoney = mapper.queryMoney(fromName);
         double toMoney = mapper.queryMoney(toName);
-        if (fromMoney-money < 0.000001) {
+        if (fromMoney-money < -0.000001) {
             throw new RuntimeException("Óà¶î²»×ã");
         }
         mapper.update(fromName,fromMoney - money);
