@@ -24,7 +24,7 @@ public class ItemController3 {
     @Autowired
     private PieceService pieceService;
 
-    @RequestMapping("{piece}")
+    @GetMapping("{piece}")
     @ResponseBody
     public String getLineup(@PathVariable String[] piece) throws LOLException {//@RequestParam(value = "piece")
         try {

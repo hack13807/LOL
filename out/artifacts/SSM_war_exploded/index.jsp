@@ -22,10 +22,10 @@
 
       $.ajax({
         url: "line/"+checkID,
-        type: "post",
-        data: {
-          "piece": checkID,
-        },
+        type: "get",
+        // data: {
+        //   "piece": checkID,
+        // },
         dataType: "text",
         traditional: true,
         success: function (result) {

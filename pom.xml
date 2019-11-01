@@ -12,6 +12,7 @@
         <module>MybatisSpring</module>
         <module>SpringMVC</module>
         <module>SSM</module>
+        <module>Redis</module>
     </modules>
 
     <repositories>

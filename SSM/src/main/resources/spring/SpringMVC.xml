@@ -40,4 +40,27 @@
 
     <!--  配置异常处理器  -->
     <bean class="com.wells.ssm.exception.LOLExceptionResolver"/>
+
+    <!--  配置静态资源处理器  -->
+    <!--  location：本地资源路径  -->
+    <!--  mapping：网络资源路径  -->
+    <mvc:resources mapping="/img/**" location="classpath:/img/"/>
+<!--    <mvc:resources mapping="/css/**" location="/css/"/>-->
+<!--    <mvc:resources mapping="/js/**" location="/js/"/>-->
+
+
+    <!-- 配置全局mapping的拦截器 -->
+    <mvc:interceptors>
+        <!-- 公共拦截器可以拦截所有请求，而且可以有多个 -->
+        <bean class="com.wells.ssm.interceptor.LOLInterceptor" />
+<!--        <bean class="com.kkb.ssm.interceptor.MyHandlerInterceptor2" />-->
+        <!-- 如果有多个拦截器，则按照顺序进行配置 -->
+<!--        <mvc:interceptor>-->
+<!--            &lt;!&ndash; /**表示所有URL和子URL路径 &ndash;&gt;-->
+<!--            <mvc:mapping path="/test/**" />-->
+<!--            &lt;!&ndash; 特定请求的拦截器只能有一个 &ndash;&gt;-->
+<!--            <bean class="com.kkb.ssm.interceptor.MyHandlerInterceptor3" />-->
+<!--        </mvc:interceptor>-->
+    </mvc:interceptors>
+
 </beans>
